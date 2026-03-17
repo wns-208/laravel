@@ -15,6 +15,12 @@ use App\Http\Middleware\LogAcessoMiddleware;
 
 Route::get('/', [App\Http\Controllers\Principal::class, 'principal']);
 
+Route::get('/contato/{nome}', [App\Http\Controllers\Principal::class, 'contato']);
+
+Route::get('/contato/{nome}/{sobrenome}', [App\Http\Controllers\Principal::class, 'contatoNomeCompleto']);
+
+Route::get('/contato/{nome}/{sobrenome}/{mensagem}', [App\Http\Controllers\Principal::class, 'contatoMensagem']);
+
 
 
 
