@@ -16,6 +16,13 @@ use App\Http\Middleware\LogAcessoMiddleware;
 
     Route::get('/', [App\Http\Controllers\Principal::class, 'principal']);
 
+    Route::get('/somar/{p1}/{p2}', [App\Http\Controllers\Principal::class, 'somar']);
+    Route::get('/multiplicar/{p1}/{p2}', [App\Http\Controllers\Principal::class, 'multiplicar']);
+    Route::get('/subtrair/{p1}/{p2}', [App\Http\Controllers\Principal::class, 'subtrair']);
+    Route::get('/dividir/{p1}/{p2}', [App\Http\Controllers\Principal::class, 'dividir']);
+
+    Route::get('/produtos', [App\Http\Controllers\Principal::class, 'produtos']);
+
 
 
 
