@@ -16,6 +16,15 @@ use App\Http\Middleware\LogAcessoMiddleware;
 
     Route::get('/', [App\Http\Controllers\Principal::class, 'principal']);
 
+    route::prefix('/aluno')->group(function(){
+        route::get('/index', [App\Http\Controllers\AlunoController::class, 'index'])->name('aluno.index');
+        route::post('/adicionar', [App\Http\Controllers\AlunoController::class, 'adicionar'])->name('aluno.adicionar');
+        route::post('/remover', [App\Http\Controllers\AlunoController::class, 'remover'])->name('aluno.remover');
+        route::post('/atualizar', [App\Http\Controllers\AlunoController::class, 'atualizar'])->name('aluno.atualizar');
+        route::get('/consultar', [App\Http\Controllers\AlunoController::class, 'consultar'])->name('aluno.consultar');
+
+    });
+
 
 
 
