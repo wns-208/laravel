@@ -26,9 +26,13 @@ Route::prefix('/aluno')->group(function(){
 Route::prefix('/curso')->group(function(){
     Route::get('/inicial', [App\Http\Controllers\CursoController::class, 'inicial'])->name('curso.inicial');
     Route::post('/add', [App\Http\Controllers\CursoController::class, 'add'])->name('curso.add');
+    Route::get('/remove/{id}', [App\Http\Controllers\CursoController::class, 'remove'])->name('curso.remove');
+    Route::get('/atualizar/{id}', [App\Http\Controllers\CursoController::class, 'atualizar'])->name('curso.atualizar');
 }); 
 
 Route::prefix('/professor')->group(function(){
     Route::get('/index', [App\Http\Controllers\ProfessorController::class, 'index'])->name('professor.index');
     Route::post('/add', [App\Http\Controllers\ProfessorController::class, 'add'])->name('professor.add');
+    Route::get('/remove/{id}', [App\Http\Controllers\ProfessorController::class, 'remove'])->name('professor.remove');
+    Route::get('/atualizar/{id}', [App\Http\Controllers\ProfessorController::class, 'atualizar'])->name('professor.atualizar');
 }); 
