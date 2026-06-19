@@ -9,6 +9,5 @@ class LogAcesso extends Model
 {
     use HasFactory;
 
-    protected $table = 'alunos';
-    protected $fillable = ['id','nome', 'email'];
+   
 }

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class AdmiinistradorModel extends Model
 {
     use HasFactory;
+    protected $table = 'administrador';
+    protected $fillable = ['nome', 'descricao'];
 }

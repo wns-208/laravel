@@ -15,17 +15,23 @@ use App\Http\Middleware\LogAcessoMiddleware;
 
 
     Route::get('/', [App\Http\Controllers\Principal::class, 'principal']);
+    Route::get('/', function () {
+        return view('persona'); // Nome do arquivo sem a extensão .blade.php
+    });
 
+    
 
 /* Usado para criar grupos */
-Route::prefix('/persona' )->group(function(){
-    Route::get('/index', [App\Http\Controllers\PersonaController::class, 'index'])->name('persona.index');
-    Route::post('/adicionar', [App\Http\Controllers\PersonaController::class, 'adicionar'])->name('Persona.adicionar');
-    Route::post('/remover', [App\Http\Controllers\PersonaController::class, 'remover'])->name('Persona.remover');
-    Route::post('/atualizar', [App\Http\Controllers\PersonaController::class, 'atualizar'])->name('Persona.atualizar');
-    Route::get('/consultar', [App\Http\Controllers\Principal::class, 'principal'])->name('Persona.consultar');
+Route::prefix('/administrador' )->group(function(){
+    Route::get('/index', [App\Http\Controllers\AdministradorController::class, 'index'])->name('administrador.index');
+    Route::post('/adicionar', [App\Http\Controllers\AdministradorController::class, 'adicionar'])->name('administrador.adicionar');
+    Route::post('/remover', [App\Http\Controllers\AdministradorController::class, 'remover'])->name('administrador.remover');
+    Route::post('/atualizar', [App\Http\Controllers\AdministradorController::class, 'atualizar'])->name('administrador.atualizar');
+    Route::get('/consultar', [App\Http\Controllers\AdministradorController::class, 'consultar'])->name('administrador.consultar');
 
 });
+
+
 
 // como acessar?
 //para adicionar
