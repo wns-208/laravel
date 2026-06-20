@@ -10,10 +10,10 @@
 </head>
 <body>
 
-  <nav class="nav">
+  <nav class="nav" {{ route('administrador.index') }}>
     <a href="index.html" class="logo">Grace<span>.</span></a>
     <ul class="nav-links">
-      <li><a href="index.html">Voltar ao site</a></li>
+      <li><a href="{{ route('persona.index') }}">Voltar ao site</a></li>
     </ul>
   </nav>
 

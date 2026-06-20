@@ -14,14 +14,16 @@ use App\Http\Middleware\LogAcessoMiddleware;
 */
 
 
-    Route::get('/', [App\Http\Controllers\Principal::class, 'principal']);
-    Route::get('/', function () {
-        return view('persona'); // Nome do arquivo sem a extensão .blade.php
+    Route::get('/', [App\Http\Controllers\PersonaController::class, 'index']);
+    Route::prefix('/Persona' )->group(function(){
+    Route::get('/index', [App\Http\Controllers\PersonaController::class, 'index'])->name('persona.index');// Nome do arquivo sem a extensão .blade.php
     });
 
-    
+
 
 /* Usado para criar grupos */
+use App\Http\Controllers\AdministradorController;
+
 Route::prefix('/administrador' )->group(function(){
     Route::get('/index', [App\Http\Controllers\AdministradorController::class, 'index'])->name('administrador.index');
     Route::post('/adicionar', [App\Http\Controllers\AdministradorController::class, 'adicionar'])->name('administrador.adicionar');
