@@ -21,6 +21,7 @@ Route::prefix('/aluno')->group(function(){
     Route::post('/add', [App\Http\Controllers\AlunoController::class, 'add'])->name('aluno.add');
     Route::get('/remove/{id}', [App\Http\Controllers\AlunoController::class, 'remove'])->name('aluno.remove');
     Route::get('/atualizar/{id}', [App\Http\Controllers\AlunoController::class, 'atualizar'])->name('aluno.atualizar');
+    Route::post('/save', [App\Http\Controllers\AlunoController::class, 'save'])->name('aluno.save');
 }); 
 
 Route::prefix('/curso')->group(function(){
@@ -28,6 +29,7 @@ Route::prefix('/curso')->group(function(){
     Route::post('/add', [App\Http\Controllers\CursoController::class, 'add'])->name('curso.add');
     Route::get('/remove/{id}', [App\Http\Controllers\CursoController::class, 'remove'])->name('curso.remove');
     Route::get('/atualizar/{id}', [App\Http\Controllers\CursoController::class, 'atualizar'])->name('curso.atualizar');
+    Route::post('/save', [App\Http\Controllers\CursoController::class, 'save'])->name('curso.save');
 }); 
 
 Route::prefix('/professor')->group(function(){

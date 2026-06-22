@@ -17,10 +17,24 @@
     </form>
 
     @isset($professores)
+    <td>
             @foreach($professores as $professor)
                 <h3>{{ $professor->nome }}</h3>
                 <h3>{{ $professor->email }}</h3>
                 <h3>{{ $professor->telefone }}</h3>
-            @endforeach
-    @endisset
+                </td>
+                        <td>
+                            <form action="{{ route('aluno.remove', ['id' => $aluno->id]) }}" method="GET">
+                                <button type="submit">Remover</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{ route('aluno.atualizar', ['id' => $aluno->id]) }}" method="GET">
+                                <button type="submit">Atualizar</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+        @endisset
+    </table>
 </div>

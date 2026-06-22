@@ -66,4 +66,6 @@ class AlunoController extends Controller
 
         return view('aluno.index', ['success'=>'Atualizado!', 'alunos'=>$aluno::all()]);
     }
+    
+   
 }
