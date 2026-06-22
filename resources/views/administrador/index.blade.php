@@ -34,35 +34,38 @@
   </section>
 
   <!-- MODAL -->
-  <div class="modal-overlay" id="modal">
-    <div class="modal">
-      <h3 id="modalTitle">Novo projeto</h3>
-      <div class="field">
-        <label>Título *</label>
-        <input id="fTitle" type="text" placeholder="Atelier Lumen" />
-      </div>
-      <div class="field">
-        <label>Categoria *</label>
-        <input id="fCategory" type="text" placeholder="Identidade Visual" />
-      </div>
-      <div class="field">
-        <label>Tamanho (colunas)</label>
-        <select id="fSpan">
-          <option value="1">Pequeno (1 coluna)</option>
-          <option value="2">Médio (2 colunas)</option>
-          <option value="3">Grande (3 colunas)</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Cor / gradiente</label>
-        <div class="swatches" id="swatches"></div>
-      </div>
-      <div class="modal-actions">
-        <button class="btn btn-ghost full" id="cancelBtn">Cancelar</button>
-        <button class="btn btn-primary full" id="saveBtn">Salvar</button>
+   <!-- <form action="{{ route('administrador.adicionar') }}" method="post"> -->
+    @csrf
+    <div class="modal-overlay" id="modal">
+      <div class="modal">
+        <h3 id="modalTitle">Novo projeto</h3>
+        <div class="field">
+          <label>Título *</label>
+          <input id="fTitle" type="text" name="titulo" placeholder="Atelier Lumen" />
+        </div>
+        <div class="field">
+          <label>Categoria *</label>
+          <input id="fCategory" name="categoria" type="text" placeholder="Identidade Visual" />
+        </div>
+        <div class="field">
+          <label>Tamanho (colunas)</label>
+          <select id="fSpan" name="span">
+            <option value="1">Pequeno (1 coluna)</option>
+            <option value="2">Médio (2 colunas)</option>
+            <option value="3">Grande (3 colunas)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Cor / gradiente</label>
+          <div class="swatches" id="swatches"></div>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-ghost full" id="cancelBtn">Cancelar</button>
+          <button type="submit" class="btn btn-primary full" id="saveBtn">Salvar</button>
+        </div>
       </div>
     </div>
-  </div>
+  <!-- </form> -->
 
   <script src="{{ asset('portfolio.js') }}"></script>
   <script src="{{ asset('gerenciar.js') }}"></script>

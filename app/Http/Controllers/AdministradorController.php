@@ -12,11 +12,11 @@ class AdministradorController extends Controller
 
   /* funcao de Adicionar */
 
-
-  function adicionar(Request $dados) {
-    $administrador = new \App\models\AdministradorModel();
-    $administrador::create($dados->all());
-  }
+  
+  // function adicionar(Request $dados) {
+  //   $administrador = new \App\Models\AdministradorModel();
+  //   $administrador::create($dados->all());
+  // }
 
   /* Funcao de Remove  */
 

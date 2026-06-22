@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('administrador', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nome');
-            $table->string('descricao');
+            $table->string('titulo');
+        $table->string('categoria');
+        $table->integer('span')->default(1);
+        $table->string('cor')->nullable();
         });
     }
 
