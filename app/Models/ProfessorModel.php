@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LogAcesso extends Model
+class ProfessorModel extends Model
 {
     use HasFactory;
+    protected $table = 'professor';
+    protected $fillable = ['nome', 'email', 'telefone'];
 
-    protected $table = 'alunos';
-    protected $fillable = ['id','nome', 'email'];
+
 }
+    
