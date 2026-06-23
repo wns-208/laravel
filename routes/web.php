@@ -23,7 +23,6 @@ Route::prefix('/aluno' )->group(function(){
     Route::post('/adicionar', [App\Http\Controllers\AlunoController::class, 'adicionar'])->name('aluno.adicionar');
     Route::get('/remove/{id}', [App\Http\Controllers\AlunoController::class, 'remove'])->name('aluno.remove');
     Route::get('/atualizar/{id}', [App\Http\Controllers\AlunoController::class, 'atualizar'])->name('aluno.atualizar');
-    Route::get('/consultar', [App\Http\Controllers\Principal::class, 'principal'])->name('aluno.consultar');
     Route::post('/save', [App\Http\Controllers\AlunoController::class, 'save'])->name('aluno.save');
 
 });
@@ -44,7 +43,6 @@ Route::prefix('/curso')->group(function(){
     Route::post('/adicionar}', [App\Http\Controllers\CursoController::class, 'adicionar'])->name('curso.adicionar');
     Route::get('/remove/{id}', [App\Http\Controllers\CursoController::class, 'remove'])->name('curso.remove');
     Route::get('/atualizar/{id}', [App\Http\Controllers\CursoController::class, 'atualizar'])->name('curso.atualizar');
-    Route::get('/consultar', [App\Http\Controllers\Principal::class, 'principal'])->name('curso.consultar');
     Route::post('/save', [App\Http\Controllers\CursoController::class, 'save'])->name('curso.save');
 });
 
@@ -56,7 +54,6 @@ Route::prefix('/professor')->group(function(){
     Route::post('/adicionar', [App\Http\Controllers\ProfessorController::class, 'adicionar'])->name('professor.adicionar');
     Route::get('/remove/{id}', [App\Http\Controllers\ProfessorController::class, 'remove'])->name('professor.remove');
     Route::get('/atualizar/{id}', [App\Http\Controllers\ProfessorController::class, 'atualizar'])->name('professor.atualizar');
-    Route::get('/consultar', [App\Http\Controllers\Principal::class, 'principal'])->name('professor.consultar');
     Route::post('/save', [App\Http\Controllers\ProfessorController::class, 'save'])->name('professor.save');
 });
 
@@ -64,21 +61,19 @@ Route::prefix('/professor')->group(function(){
 
 Route::prefix('/componente')->group(function(){
     Route::get('/index', [App\Http\Controllers\ComponenteController::class, 'index'])->name('componente.index');
-    Route::post('/adicionar/{id}', [App\Http\Controllers\ComponenteController::class, 'adicionar'])->name('componente.adicionar');
+    Route::post('/adicionar', [App\Http\Controllers\ComponenteController::class, 'adicionar'])->name('componente.adicionar');
     Route::get('/remove/{id}', [App\Http\Controllers\ComponenteController::class, 'remove'])->name('componente.remove');
-    Route::get('/atualizar', [App\Http\Controllers\ComponenteController::class, 'atualizar'])->name('componente.atualizar');
-    Route::get('/consultar', [App\Http\Controllers\Principal::class, 'principal'])->name('componente.consultar');
+    Route::get('/atualizar/{id}', [App\Http\Controllers\ComponenteController::class, 'atualizar'])->name('componente.atualizar');
     Route::post('/save', [App\Http\Controllers\ComponenteController::class, 'save'])->name('componente.save');
 });
 
 
-// Criando uma rota admionistrador
+// Criando uma rota administrador
 Route::prefix('/administrador')->group(function(){
     Route::get('/index', [App\Http\Controllers\AdministradorController::class, 'index'])->name('administrador.index');
-    Route::post('/adicionar', [App\Http\Controllers\AdministradorDController::class, 'adicionar'])->name('administrador.adicionar');
-    Route::get('/remove/{id}', [App\Http\Controllers\AdministradorDController::class, 'remove'])->name('administrador.remove');
-    Route::get('/atualizar/{id}', [App\Http\Controllers\AdministradorDController::class, 'atualizar'])->name('administrador.atualizar');
-    Route::get('/consultar', [App\Http\Controllers\Principal::class, 'principal'])->name('administrador.consultar');
+    Route::post('/adicionar', [App\Http\Controllers\AdministradorController::class, 'adicionar'])->name('administrador.adicionar');
+    Route::get('/remove/{id}', [App\Http\Controllers\AdministradorController::class, 'remove'])->name('administrador.remove');
+    Route::get('/atualizar/{id}', [App\Http\Controllers\AdministradorController::class, 'atualizar'])->name('administrador.atualizar');
     Route::post('/save', [App\Http\Controllers\AdministradorController::class, 'save'])->name('administrador.save');
 });
             

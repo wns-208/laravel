@@ -16,7 +16,7 @@
     @isset($sucesso)
     <h1> {{$sucesso}} </h1>
     @endisset
-    if($errors->any())
+    @if($errors->any())
             <ul>
                 @foreach($errors->all() as $error)
                     <li>{{ $error }}</li>

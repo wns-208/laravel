@@ -69,7 +69,7 @@ class CursoController extends Controller
     function save(Request $dados) {
         $curso = new \App\Models\CursoModel();
         $curso = $curso::find($dados->id);
-        $curso->update($dadoscurso->all());
+        $curso->update($dados->all());
 
         return view('curso.index', ['success'=>'Atualizado!', 'cursos'=>$curso::all()]);
     }

@@ -7,7 +7,7 @@
         <label for="nome">Nome</label>
         <input type="text" name="nome" id="nome" value="{{ $curso->nome }}">
         <label for="periodo">Período</label>
-        <input type="text" name="periodo" id="periodo" value="{{ $aluno->periodo }}">
+        <input type="text" name="periodo" id="periodo" value="{{ $curso->periodo }}">
 
         <button type="submit">Salvar</button>
         @isset($success)

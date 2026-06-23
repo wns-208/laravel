@@ -8,18 +8,14 @@ use Illuminate\Support\Facades\Validator;
 class AdministradorController extends Controller
 {
     function index(){ 
- 
-
-      if ($validator->fails()) {
-          return redirect()
-              ->route('administrador.index')
-              ->withErrors($validator)
-              ->withInput();
-      }
         $administrador = new \App\Models\AdministradorModel();
 
         return view('administrador.index', ['administradores'=>$administrador::all()]);
     }
+
+
+    
+ 
 
     function adicionar (Request $dados) {
         $administrador = new \App\Models\AdministradorModel();
@@ -29,12 +25,12 @@ class AdministradorController extends Controller
             $dados->all(),
               [
                   'nome' => 'required|min:3|max:255',
-                  'email' => 'required|min:255|max:255,',
+                  'email' => 'required|min:12|max:255,',
                   'telefone' => 'required|min:11|max:11',
                   'cpf' => 'required|min:11|max:11',
-                  'usuario' => 'required|min:255|max:255',
-                  'senha' => 'required|min:255|max:255',
-                  'status' => 'required|min:50|max:50'
+                  'usuario' => 'required|min:3|max:255',
+                  'senha' => 'required|min:3|max:255',
+                  'status' => 'required|min:3|max:50'
 
               ],
               [
@@ -43,14 +39,23 @@ class AdministradorController extends Controller
                   'nome.max' => 'O campo nome deve conter no máximo 255 caracteres.',
               ]
       );
+      
+      if ($validator->fails()) {
+        return redirect()
+            ->route('administrador.index')
+            ->withErrors($validator)
+            ->withInput();
+    }
+      $administrador = new \App\Models\AdministradorModel();
+
+      return view('administrador.index', ['administradores'=>$administrador::all()]);
+  }
+
 
         //Recuperando todos os administradors do banco e enviando para A View
 
-        $administrador = new \App\Models\AdministradorModel();
-
-        return view('administrador.index', ['sucesso'=>'Cadastrado!', 'administradores' =>$administradores::all()]);
     
-    }
+    
 
     function remove(string $id) {
         $administrador = new \App\Models\AdministradorModel();
@@ -58,6 +63,13 @@ class AdministradorController extends Controller
 
         return view('administrador.index', ['success'=>'Removido!', 'administradores'=>$administrador::all()]);
 
+    }
+
+    function atualizar(string $id) {
+        $administrador = new \App\Models\AdministradorModel();
+        $administrador = $administrador::find($id);
+
+        return view('administrador.atualizar', ['administrador'=>$administrador]);
     }
 
     function save(Request $dados) {

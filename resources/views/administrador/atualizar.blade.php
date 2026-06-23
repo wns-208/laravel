@@ -12,20 +12,19 @@
 
         <label for="telefone">Telefone</label>
         <input type="text" name="telefone" id="telefone" value="{{ $administrador->telefone }}">
-        
+
         <label for="cpf">CPF</label>
         <input type="text" name="cpf" id="cpf" value="{{ $administrador->cpf }}">
-        
-        <label for="usuario">Usuário</label>
+
+        <label for="usuario">Usuario</label>
         <input type="text" name="usuario" id="usuario" value="{{ $administrador->usuario }}">
-        
-        <label for="senha">Senha</label>
-        <input type="text" name="senha" id="senha" value="{{ $administrador->senha }}">
-        
+
         <label for="status">Status</label>
         <input type="text" name="status" id="status" value="{{ $administrador->status }}">
+        
 
         <button type="submit">Salvar</button>
+
         @isset($success)
             <h1>{{ $success }}</h1>
         @endisset
