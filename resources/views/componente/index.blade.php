@@ -30,6 +30,8 @@
                     <tr>
                         <td>
                             <h3>{{ $componente->nome }}</h3>
+                            <h3>{{ $componente->hora_incio }}</h3>
+                            <h3>{{ $componente->hora_fim }}</h3>
                         </td>
                         <td>
                         <form action="{{ route('componente.remove', ['id' => $componente->id]) }}" method="GET">

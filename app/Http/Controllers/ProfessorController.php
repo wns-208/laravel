@@ -7,35 +7,35 @@ use Illuminate\Support\Facades\Validator;
 
 class ProfessorController extends Controller
 {
+
     function index(){ 
         $professor = new \App\Models\ProfessorModel();
-
         return view('professor.index', ['professores'=>$professor::all()]);
     }
+ 
+    function adicionar(Request $dados) { 
 
-    function adicionar(Request $dados ) {
         $validator = Validator::make(
             $dados->all(),
               [
-                  'nome' => 'required|min:3|max:255',
-                  'email' => 'required|min:12|max:255',
-                  'telefone ' => 'required|min:11|max:11'
+                  'nome' => 'required|min:3|max:250',
+                  'email' => 'required|min:5|max:250',
+                  'telefone' => 'required|min:14|max:14'
               ],
               [
-                  'nome.required' => 'O campo nome é obrigatório.',
-                  'nome.min' => 'O campo nome deve conter no mínimo 3 caracteres.',
-                  'nome.max' => 'O campo nome deve conter no máximo 255 caracteres.'
-              ],
-              [
-                    'email.required' => 'O campo email é obrigatorio.',
-                    'email.min' => 'O campo email deve ter no mínimo 11',
-                    'email.max' => 'O campo email deve ter no máximo 255',
-              ],
-              [
-                    'telefone.required' => 'O campo telefone é obrigatorio.',
-                    'telefone.min' => 'O campo telefone deve ter no mínimo 1',
-                    'telefone.max' => 'O campo telefone deve ter no máximo 11',
+                  'nome.required' => 'O campo Nome é obrigatório.',
+                  'nome.min' => 'O campo Nome deve conter no mínimo 3 caracteres.',
+                  'nome.max' => 'O campo Nome deve conter no máximo 250 caracteres.',
+                  
+                  'email.required' => 'O campo Email é obrigatório.',
+                  'email.min' => 'O campo Email deve conter no mínimo 5 caracteres.',
+                  'email.max' => 'O campo Email deve conter no máximo 250 caracteres.',
+
+                  'telefone.required' => 'O campo Telefone é obrigatório.',
+                  'telefone.min' => 'O campo Telefone deve conter no mínimo 14 caracteres.',
+                  'telefone.max' => 'O campo Telefone deve conter no máximo 14 caracteres.',
               ]
+              
       );
 
       if ($validator->fails()) {
@@ -44,12 +44,12 @@ class ProfessorController extends Controller
               ->withErrors($validator)
               ->withInput();
       }
-            $professor = new \App\Models\ProfessorModel;
-            $professor::create($dados->all());
-            
-            $professor = new \App\Models\ProfessorModel();
-        
-  
+
+        $professor = new \App\Models\ProfessorModel();
+        $professor::create($dados->all());
+
+        $professores = new \App\Models\ProfessorModel();
+
         return view('professor.index', ['success'=>'Cadastrado!', 'professores'=>$professores::all()]);
     }
 

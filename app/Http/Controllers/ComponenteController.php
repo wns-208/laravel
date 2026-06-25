@@ -7,26 +7,30 @@ use Illuminate\Support\Facades\Validator;
 
 class ComponenteController extends Controller
 {
-   
+
     function index(){ 
         $componente = new \App\Models\ComponenteModel();
-
         return view('componente.index', ['componentes'=>$componente::all()]);
     }
 
     function adicionar(Request $dados) { 
 
-     $validator = Validator::make(
+        $validator = Validator::make(
             $dados->all(),
               [
                   'nome' => 'required|min:3|max:255',
-                  'hora_inicio' => 'required|datetime',
-                  'hora_fim' => 'required|datetime',
+                  'hora_inicio' => 'required',
+                  'hora_fim' => 'required'
               ],
               [
-                  'nome.required' => 'O campo nome é obrigatório.',
-                  'nome.min' => 'O campo nome deve conter no mínimo 3 caracteres.',
-                  'nome.max' => 'O campo nome deve conter no máximo 255 caracteres.',
+                  'nome.required' => 'O campo Nome é obrigatório.',
+                  'nome.min' => 'O campo Nome deve conter no mínimo 3 caracteres.',
+                  'nome.max' => 'O campo Nome deve conter no máximo 255 caracteres.',
+
+                  'hora_inicio.required' => 'O campo  Hora do inicio é obrigatório.  Ex. (07:30:00 2024-05-12 )',
+
+                  'hora_fim.required' => 'O campo Hora do término é obrigatório. Ex. (11:40:00 2024-05-12 )',
+
               ]
       );
 
@@ -36,30 +40,24 @@ class ComponenteController extends Controller
               ->withErrors($validator)
               ->withInput();
       }
-        $componente = new \App\Models\ComponenteModel();
-
-        return view('componente.index', ['componentes'=>$componente::all()]);
-    
-    
-
-
+        
         $componente = new \App\Models\ComponenteModel();
         $componente::create($dados->all());
-
-        //RECUPERANDO TODOS OS COMPONENTES DO BANCO E ENVIANDO PARA A VIEW
+        
         $componentes = new \App\Models\ComponenteModel();
 
-        return view('componente.index', ['success'=>'Cadastrado!', 'componentes'=>$componentes::all()]);
+        return view('componente.index', ['success'=>'Cadastrado!', 'componente'=>$componentes::all()]);
+        
     }
-
+    
     function remove(string $id) {
         $componente = new \App\Models\ComponenteModel();
         $componente::destroy($id);
 
-        return view('componente.index', ['success'=>'Removido!', 'componentes'=>$componente::all()]);
+        return view('componente.index', ['success'=>'Removido!', 'componente'=>$componente::all()]);
 
     }
-    
+
     function atualizar(string $id) {
         $componente = new \App\Models\ComponenteModel();
         $componente = $componente::find($id);
@@ -74,6 +72,5 @@ class ComponenteController extends Controller
 
         return view('componente.index', ['success'=>'Atualizado!', 'componentes'=>$componente::all()]);
     }
-
 
 }

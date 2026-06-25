@@ -9,27 +9,27 @@ class CursoController extends Controller
 {
     function index(){ 
         $curso = new \App\Models\CursoModel();
-
         return view('curso.index', ['cursos'=>$curso::all()]);
     }
-    function adicionar(Request $dados ) {
+
+    function adicionar(Request $dados) { 
+
         $validator = Validator::make(
             $dados->all(),
               [
-                  'nome' => 'required|min:3|max:255',
-                  'periodo' => 'required|min:4|max:255',
-
+                  'nome' => 'required|min:2|max:250',
+                  'periodo' => 'required|min:3|max:250'
               ],
               [
-                  'nome.required' => 'O campo nome é obrigatório.',
-                  'nome.min' => 'O campo nome deve conter no mínimo 3 caracteres.',
-                  'nome.max' => 'O campo nome deve conter no máximo 255 caracteres.',
-              ],
-              [
-                'periodo.required' => 'O campo é obrigatorio. ',
-                'periodo.min' => 'O campo periodo deve ter no mínimo 3. ',
-                'periodo.max' => 'O campo periodo deve ter no máximo 255. ',
+                  'nome.required' => 'O campo Nome é obrigatório.',
+                  'nome.min' => 'O campo Nome deve conter no mínimo 2 caracteres.',
+                  'nome.max' => 'O campo Nome deve conter no máximo 250 caracteres.',
+                  
+                  'periodo.required' => 'O campo Periodo é obrigatório.',
+                  'periodo.min' => 'O campo Periodo deve conter no mínimo 3 caracteres.',
+                  'periodo.max' => 'O campo Periodo deve conter no máximo 250 caracteres.',
               ]
+              
       );
 
       if ($validator->fails()) {
@@ -38,24 +38,20 @@ class CursoController extends Controller
               ->withErrors($validator)
               ->withInput();
       }
+
         $curso = new \App\Models\CursoModel();
         $curso::create($dados->all());
 
+        $cursos = new \App\Models\CursoModel();
 
-
-        
-        $curso = new \App\Models\CursoModel();
-
-        return view('curso.index', ['sucesso'=>'Cadastrado!', 'curso' =>$curso::all()]);
-    
+        return view('curso.index', ['success'=>'Cadastrado!', 'cursos'=>$cursos::all()]);
     }
-
 
     function remove(string $id) {
         $curso = new \App\Models\CursoModel();
         $curso::destroy($id);
 
-        return view('curso.index', ['success'=>'Removido!', 'curso'=>$curso::all()]);
+        return view('curso.index', ['success'=>'Removido!', 'cursos'=>$curso::all()]);
 
     }
 
@@ -73,4 +69,5 @@ class CursoController extends Controller
 
         return view('curso.index', ['success'=>'Atualizado!', 'cursos'=>$curso::all()]);
     }
+
 }
