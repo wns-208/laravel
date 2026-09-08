@@ -16,6 +16,8 @@ use App\Http\Middleware\LogAcessoMiddleware;
 
     Route::get('/', [App\Http\Controllers\Principal::class, 'principal']);
 
+    Route::get('/produtos/{id}/{nome}', [App\Http\Controllers\ProdutoController::class, 'index'])->name('produtos');
 
+    
 
 
